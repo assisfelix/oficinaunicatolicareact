@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import Titulo from './Titulo';
+import ListaAtividades from './ListaAtividades';
+import Contador from './Contador';
+import CapsLock from './CapsLock';
+import { useState } from 'react';
+import PlayerForm from './PlayerForm';
+import PlayerList from './PlayerList';
 
 function App() {
+  // const listaDeAtividades = ["Se vestir", "Ir pra faculdade", "Estudar", "Ir pra casa"]
+  // const [count, setCount] = useState(0)
+
+  const [players, setPlayers] = useState([])
+
+  function handleAddPlayers(novoJogador){
+    setPlayers([...players, novoJogador])    
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Titulo texto="Sorteador" />
+      <PlayerForm handleAddPlayers={handleAddPlayers}></PlayerForm>
+      <PlayerList players={players}></PlayerList>
     </div>
   );
 }
